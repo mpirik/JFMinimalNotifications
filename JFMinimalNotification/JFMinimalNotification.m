@@ -88,8 +88,6 @@ static CGFloat const kNotificationAccessoryPadding = 10.0f;
     _dismissalTimer                     = nil;
 }
 
-+ (instancetype)
-
 + (instancetype)notificationWithStyle:(JFMinimalNotificationStytle)style title:(NSString*)title subTitle:(NSString*)subTitle
 {
     return [self notificationWithStyle:style title:title subTitle:subTitle dismissalDelay:0];
