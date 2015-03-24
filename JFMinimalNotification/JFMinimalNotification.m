@@ -29,7 +29,7 @@
 #import "UIColor+JFMinimalNotificationColors.h"
 #import "NSInvocation+Constructors.h"
 
-static CGFloat const kNotificationViewHeight = 85.0f;
+static CGFloat const kNotificationViewHeight = 110.0f;
 static CGFloat const kNotificationTitleLabelHeight = 20.0f;
 static CGFloat const kNotificationPadding = 20.0f;
 static CGFloat const kNotificationAccessoryPadding = 10.0f;
@@ -87,6 +87,8 @@ static CGFloat const kNotificationAccessoryPadding = 10.0f;
     _subTitleLabelVerticalConsraints    = nil;
     _dismissalTimer                     = nil;
 }
+
++ (instancetype)
 
 + (instancetype)notificationWithStyle:(JFMinimalNotificationStytle)style title:(NSString*)title subTitle:(NSString*)subTitle
 {
