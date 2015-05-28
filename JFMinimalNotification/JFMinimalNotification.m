@@ -199,8 +199,6 @@ static CGFloat const kNotificationAccessoryPadding = 10.0f;
                 [self.delegate didShowNotification:self];
             }
         }];
-    } else {
-        [[NSException exceptionWithName:NSInternalInconsistencyException reason:@"Must have a superview before calling show" userInfo:nil] raise];
     }
 }
 
