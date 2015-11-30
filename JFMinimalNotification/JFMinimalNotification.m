@@ -234,21 +234,23 @@ static CGFloat const kNotificationAccessoryPadding = 10.0f;
     }
     UIView* superview = self.superview;
     UIView* notification = self;
-    NSDictionary* views = NSDictionaryOfVariableBindings(superview, notification);
-    NSDictionary* metrics = @{@"height": @(kNotificationViewHeight)};
-    
-    NSString* verticalConstraintString;
-    if (topPresentation) {
-        verticalConstraintString = @"V:[notification(==height)][superview]";
-    } else {
-        verticalConstraintString = @"V:[superview][notification(==height)]";
+    if (superview != nil ) {
+        NSDictionary* views = NSDictionaryOfVariableBindings(superview, notification);
+        NSDictionary* metrics = @{@"height": @(kNotificationViewHeight)};
+        
+        NSString* verticalConstraintString;
+        if (topPresentation) {
+            verticalConstraintString = @"V:[notification(==height)][superview]";
+        } else {
+            verticalConstraintString = @"V:[superview][notification(==height)]";
+        }
+        
+        self.notificationVerticalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:verticalConstraintString options:0 metrics:metrics views:views];
+        [self.superview addConstraints:self.notificationVerticalConstraints];
+        
+        self.notificationHorizontalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|[notification]|" options:0 metrics:metrics views:views];
+        [self.superview addConstraints:self.notificationHorizontalConstraints];
     }
-    
-    self.notificationVerticalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:verticalConstraintString options:0 metrics:metrics views:views];
-    [self.superview addConstraints:self.notificationVerticalConstraints];
-    
-    self.notificationHorizontalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|[notification]|" options:0 metrics:metrics views:views];
-    [self.superview addConstraints:self.notificationHorizontalConstraints];
 }
 
 #pragma mark ----------------------
